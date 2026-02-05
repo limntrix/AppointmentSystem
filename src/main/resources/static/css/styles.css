@@ -1,0 +1,15 @@
+/* Custom overrides if needed atop Tailwind */
+
+body {
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for clean look in some containers */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

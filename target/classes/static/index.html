@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediConnect - Hospital Management System</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-inter antialiased">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center cursor-pointer" onclick="showSection('home')">
+                    <ion-icon name="medkit" class="text-3xl text-blue-600 mr-2"></ion-icon>
+                    <span class="text-2xl font-bold text-gray-900 tracking-tight">MediConnect</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" onclick="showSection('home')"
+                        class="text-gray-500 hover:text-blue-600 font-medium">Home</a>
+                    <a href="#" onclick="showSection('doctors')"
+                        class="text-gray-500 hover:text-blue-600 font-medium">Doctors</a>
+
+                    <!-- Guest Links -->
+                    <div id="nav-guest" class="flex items-center space-x-4">
+                        <a href="#" onclick="showSection('login')"
+                            class="text-gray-900 font-medium hover:text-blue-600">Login</a>
+                        <button onclick="showSection('login')"
+                            class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium shadow-lg shadow-blue-600/30 hover:bg-blue-700 transition">
+                            Book Appointment
+                        </button>
+                    </div>
+
+                    <!-- User Links -->
+                    <div id="nav-user" class="hidden flex items-center space-x-4">
+                        <span id="user-greeting" class="text-gray-900 font-medium">Hi, User</span>
+                        <button onclick="logout()" class="text-red-500 hover:text-red-700 font-medium">Logout</button>
+                        <button id="dashboard-btn" onclick="navigateToDashboard()"
+                            class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium shadow-md hover:bg-blue-700">
+                            Dashboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- VIEWS CONTAINER -->
+    <main class="min-h-[calc(100vh-4rem)]">
+
+        <!-- HOME VIEW -->
+        <section id="view-home" class="view-section">
+            <div class="relative bg-white overflow-hidden">
+                <div class="max-w-7xl mx-auto">
+                    <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                        <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                            <div class="sm:text-center lg:text-left">
+                                <h1
+                                    class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                                    <span class="block xl:inline">Modern Healthcare</span>
+                                    <span class="block text-blue-600 xl:inline">Simplified</span>
+                                </h1>
+                                <p
+                                    class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                                    Book appointments with the best specialists in town. Manage your health efficiently
+                                    with our digital platform.
+                                </p>
+                                <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                                    <div class="rounded-md shadow">
+                                        <a href="#" onclick="showSection('login')"
+                                            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg">
+                                            Get Started
+                                        </a>
+                                    </div>
+                                    <div class="mt-3 sm:mt-0 sm:ml-3">
+                                        <a href="#" onclick="showSection('doctors')"
+                                            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 md:py-4 md:text-lg">
+                                            View Doctors
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+                <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-gray-50 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                        alt="Doctor" class="object-cover w-full h-full opacity-90">
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="py-12 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="lg:text-center">
+                        <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">Features</h2>
+                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                            Everything you need
+                        </p>
+                    </div>
+                    <div class="mt-10">
+                        <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                            <div class="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl">
+                                <div
+                                    class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mb-4">
+                                    <ion-icon name="calendar" class="text-2xl"></ion-icon>
+                                </div>
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">Easy Scheduling</h3>
+                                <p class="mt-2 text-base text-gray-500">Book appointments in seconds with real-time
+                                    availability checking.</p>
+                            </div>
+                            <div class="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl">
+                                <div
+                                    class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mb-4">
+                                    <ion-icon name="notifications" class="text-2xl"></ion-icon>
+                                </div>
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">Smart Reminders</h3>
+                                <p class="mt-2 text-base text-gray-500">Never miss a visit with automated email and SMS
+                                    notifications.</p>
+                            </div>
+                            <div class="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl">
+                                <div
+                                    class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mb-4">
+                                    <ion-icon name="shield-checkmark" class="text-2xl"></ion-icon>
+                                </div>
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">Secure Records</h3>
+                                <p class="mt-2 text-base text-gray-500">Your health data is encrypted and accessible
+                                    only to you.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOGIN VIEW -->
+        <section id="view-login" class="view-section hidden">
+            <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-2xl shadow-xl">
+                    <div>
+                        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+                    </div>
+                    <form class="mt-8 space-y-6" id="loginForm">
+                        <div class="rounded-md shadow-sm -space-y-px">
+                            <div>
+                                <label for="email-address" class="sr-only">Email address</label>
+                                <input id="email-address" name="email" type="email" required
+                                    class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                                    placeholder="Email address" value="john@gmail.com">
+                            </div>
+                            <div>
+                                <label for="password" class="sr-only">Password</label>
+                                <input id="password" name="password" type="password" required
+                                    class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                                    placeholder="Password" value="password">
+                            </div>
+                        </div>
+
+                        <div class="text-sm text-center text-gray-500">
+                            Demo: <b>john@gmail.com</b> / <b>password</b> (Patient)<br>
+                            <b>house@hospital.com</b> / <b>password</b> (Doctor/Admin)
+                        </div>
+
+                        <div>
+                            <button type="submit" id="loginBtn"
+                                class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Sign in
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- PATIENT DASHBOARD -->
+        <section id="view-dashboard-patient" class="view-section hidden container mx-auto px-4 py-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-8">Patient Dashboard</h1>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Sidebar Actions -->
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="text-lg font-semibold mb-4">Quick Actions</h3>
+                        <button onclick="showSection('book-appointment')"
+                            class="w-full bg-blue-600 text-white rounded-lg px-4 py-3 font-medium hover:bg-blue-700 transition flex items-center justify-center">
+                            <ion-icon name="add-circle" class="mr-2 text-xl"></ion-icon> Book New Appointment
+                        </button>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="text-lg font-semibold mb-2">My Profile</h3>
+                        <p class="text-gray-600 text-sm">John Doe</p>
+                        <p class="text-gray-500 text-xs">Patient ID: #1024</p>
+                    </div>
+                </div>
+
+                <!-- Appointments List -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-900">My Appointments</h3>
+                            <button onclick="loadMyWaitings()"
+                                class="text-blue-600 text-sm hover:underline">Refresh</button>
+                        </div>
+                        <div id="patient-appointments-list" class="divide-y divide-gray-100">
+                            <!-- Populated by JS -->
+                            <div class="p-8 text-center text-gray-500">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMIN DASHBOARD -->
+        <section id="view-dashboard-admin" class="view-section hidden container mx-auto px-4 py-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-8">Admin Dashboard</h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500">
+                    <div class="text-gray-500 text-sm">Total Appointments</div>
+                    <div class="text-3xl font-bold text-gray-900" id="stat-total-appts">-</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500">
+                    <div class="text-gray-500 text-sm">Doctors Available</div>
+                    <div class="text-3xl font-bold text-gray-900" id="stat-active-docs">-</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-purple-500">
+                    <div class="text-gray-500 text-sm">New Patients</div>
+                    <div class="text-3xl font-bold text-gray-900">-</div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="px-6 py-4 border-b border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-900">All Appointments</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    ID</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Patient</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Doctor</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Date/Time</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Status</th>
+                                <th
+                                    class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-appointments-table" class="bg-white divide-y divide-gray-200">
+                            <!-- JS Populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOK APPOINTMENT VIEW (Reused from previous, enveloped in section) -->
+        <section id="view-book-appointment" class="view-section hidden py-12 bg-gray-50">
+            <div class="max-w-3xl mx-auto px-4">
+                <button onclick="window.history.back()"
+                    class="mb-4 text-gray-500 hover:text-gray-900 flex items-center">
+                    <ion-icon name="arrow-back" class="mr-1"></ion-icon> Back
+                </button>
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden p-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Book an Appointment</h3>
+                    <form id="bookingForm" class="space-y-6">
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Specialist</label>
+                                <select id="doctorSelect"
+                                    class="block w-full rounded-lg border-gray-300 border p-2.5 focus:ring-blue-500 focus:border-blue-500">
+                                    <option>Select a Doctor...</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                                <input type="date" id="appointmentDate"
+                                    class="block w-full rounded-lg border-gray-300 border p-2.5">
+                            </div>
+                        </div>
+
+                        <!-- Slots -->
+                        <div id="slotsContainer" class="hidden animate-fade-in">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Available Slots</label>
+                            <div id="slotsGrid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3"></div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Reason for Visit</label>
+                            <textarea id="reason" rows="3"
+                                class="block w-full rounded-lg border-gray-300 border p-2.5"></textarea>
+                        </div>
+
+                        <button type="submit" id="submitBtn"
+                            class="w-full bg-blue-600 text-white rounded-lg py-3 font-medium hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">
+                            Confirm Appointment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOCTORS LIST VIEW -->
+        <section id="view-doctors" class="view-section hidden container mx-auto px-4 py-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center">Meet Our Specialists</h1>
+            <div id="doctors-list-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 transform translate-y-full transition-transform duration-300 z-50">
+        <div class="bg-gray-900 text-white px-6 py-3 rounded-lg shadow-xl flex items-center">
+            <ion-icon name="checkmark-circle" class="text-green-400 text-xl mr-3"></ion-icon>
+            <span id="toastMessage">Success</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
