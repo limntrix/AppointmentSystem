@@ -1,118 +1,103 @@
-Health Appointment Booking System
+ Health Appointment Booking System
 
-A full-stack appointment management platform that enables patients to book appointments with doctors in real time, while allowing administrators to manage users, doctor availability, and appointment workflows efficiently.
+A full-stack appointment management platform that enables real-time doctor–patient scheduling with structured approval workflows. The system allows patients to book appointments, doctors to manage availability, and administrators to oversee the appointment lifecycle.
 
-📌 Overview
+---
 
-The Health Appointment Booking System is designed to simplify the process of scheduling and managing medical appointments. The platform supports role-based operations for patients, doctors, and administrators, ensuring a structured and streamlined workflow.
+## 📌 Overview
 
-The system provides:
+The Health Appointment Booking System simplifies medical appointment scheduling through a structured, role-based workflow. It provides a centralized platform where patients, doctors, and administrators can interact efficiently.
 
-Real-time doctor-patient appointment scheduling
+The backend follows a modular layered architecture to ensure maintainability and scalability.
 
-Approval and status-based appointment workflow
+---
 
-Centralized admin management panel
+## 🚀 Features
 
-Secure and scalable backend architecture
+### 👤 Patient
+- Register and manage profile
+- View doctors and available time slots
+- Book appointments
+- Track appointment status (Pending / Approved / Rejected)
 
-🚀 Features
-👤 Patient Features
+### 👨‍⚕️ Doctor
+- Manage availability
+- View appointment requests
+- Approve or reject appointments
 
-Register and manage profile
+### 🛠 Admin
+- Manage users (patients and doctors)
+- Monitor doctor availability
+- Control appointment workflows
 
-View available doctors and their schedules
+---
 
-Book appointments
+## 🏗 Architecture
 
-Track appointment status (Pending / Approved / Rejected)
+The backend follows a layered architecture:
 
-👨‍⚕️ Doctor Features
+- **Controller Layer** – Handles HTTP requests
+- **Service Layer** – Contains business logic
+- **Repository Layer** – Manages database operations
+- **Entity Layer** – Defines database models
 
-Manage availability
+The system separates user, appointment, and admin services for better modularity.
 
-View assigned appointments
+---
 
-Approve or reject appointment requests
+## 🧰 Tech Stack
 
-🛠 Admin Panel
+**Backend**
+- Java
+- Spring Boot
+- Spring Data JPA
+- REST APIs
 
-Manage users (patients and doctors)
+**Database**
+- MySQL
 
-Control doctor availability
+**Frontend**
+- (Add your frontend technology here)
 
-Monitor and manage appointment workflows
+---
 
-Maintain system-level control
+## 📂 Project Structure
 
-🏗 Architecture
-
-The backend is built using a modular layered architecture with clear separation of concerns:
-
-Controller Layer – Handles API requests
-
-Service Layer – Contains business logic
-
-Repository Layer – Manages database operations
-
-Entity Layer – Defines database models
-
-The system separates:
-
-User management
-
-Appointment management
-
-Administrative services
-
-This ensures maintainability and scalability.
-
-🧰 Tech Stack
-
-Backend
-
-Java
-
-Spring Boot
-
-Spring Data JPA
-
-REST APIs
-
-Database
-
-MySQL
-
-Frontend
-
-(Add your frontend technology here – e.g., React / HTML-CSS / Thymeleaf)
-
-📂 Project Structure
 src/
- ├── controller/
- ├── service/
- ├── repository/
- ├── entity/
- └── config/
+├── controller/
+├── service/
+├── repository/
+├── entity/
+└── config/
 
-🔗 API Endpoints (Sample)
 
-POST /api/users – Create user
+---
 
-GET /api/doctors – List doctors
+## 🔗 API Endpoints (Sample)
 
-POST /api/appointments – Book appointment
+POST /api/users
+GET /api/doctors
+POST /api/appointments
+PUT /api/appointments/{id}
 
-PUT /api/appointments/{id} – Update appointment status
 
-⚙️ Database Design
+---
 
-The system uses MySQL for persistent storage and maintains relational mappings between:
+## ⚙️ How to Run
 
-Users
+1. Clone the repository
+git clone <your-repository-link>
 
-Doctors
 
-Appointments
+2. Configure database credentials in `application.properties`
 
-JPA/Hibernate handles entity relationships and schema management.
+3. Run the application
+mvn spring-boot:run
+
+
+4. Open in browser:
+http://localhost:8080
+
+
+---
+
