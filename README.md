@@ -1,57 +1,75 @@
 Health Appointment Booking System
 
-A full-stack appointment management platform that enables real-time doctor-patient scheduling and structured approval workflows. The system allows patients to book appointments, doctors to manage availability, and administrators to oversee the complete appointment lifecycle.
+A full-stack appointment management platform that enables patients to book appointments with doctors in real time, while allowing administrators to manage users, doctor availability, and appointment workflows efficiently.
 
-Overview
+📌 Overview
 
-The Health Appointment Booking System is designed to simplify medical appointment scheduling through a structured and role-based workflow. It provides a centralized platform where patients, doctors, and administrators can interact efficiently.
+The Health Appointment Booking System is designed to simplify the process of scheduling and managing medical appointments. The platform supports role-based operations for patients, doctors, and administrators, ensuring a structured and streamlined workflow.
 
-The system ensures reliable data handling, scalable architecture, and organized service separation.
+The system provides:
 
-Features
-Patient
+Real-time doctor-patient appointment scheduling
+
+Approval and status-based appointment workflow
+
+Centralized admin management panel
+
+Secure and scalable backend architecture
+
+🚀 Features
+👤 Patient Features
 
 Register and manage profile
 
-View doctors and available time slots
+View available doctors and their schedules
 
 Book appointments
 
-Track appointment status (Pending, Approved, Rejected)
+Track appointment status (Pending / Approved / Rejected)
 
-Doctor
+👨‍⚕️ Doctor Features
 
 Manage availability
 
-View appointment requests
+View assigned appointments
 
-Approve or reject appointments
+Approve or reject appointment requests
 
-Admin
+🛠 Admin Panel
 
 Manage users (patients and doctors)
 
-Monitor doctor availability
+Control doctor availability
 
-Control appointment workflows
+Monitor and manage appointment workflows
 
-Architecture
+Maintain system-level control
 
-The backend follows a layered architecture to ensure maintainability and separation of concerns:
+🏗 Architecture
 
-Controller Layer – Handles HTTP requests and responses
+The backend is built using a modular layered architecture with clear separation of concerns:
+
+Controller Layer – Handles API requests
 
 Service Layer – Contains business logic
 
-Repository Layer – Manages database interactions
+Repository Layer – Manages database operations
 
 Entity Layer – Defines database models
 
-The system separates appointment, user, and administrative services to maintain modular design.
+The system separates:
 
-Tech Stack
+User management
 
-Backend:
+Appointment management
+
+Administrative services
+
+This ensures maintainability and scalability.
+
+🧰 Tech Stack
+
+Backend
 
 Java
 
@@ -59,41 +77,42 @@ Spring Boot
 
 Spring Data JPA
 
-RESTful APIs
+REST APIs
 
-Database:
+Database
 
 MySQL
 
-Frontend:
+Frontend
 
-(Add your frontend technology here if applicable)
+(Add your frontend technology here – e.g., React / HTML-CSS / Thymeleaf)
 
-API Overview
+📂 Project Structure
+src/
+ ├── controller/
+ ├── service/
+ ├── repository/
+ ├── entity/
+ └── config/
 
-Sample endpoints:
+🔗 API Endpoints (Sample)
 
 POST /api/users – Create user
 
-GET /api/doctors – Retrieve doctor list
+GET /api/doctors – List doctors
 
 POST /api/appointments – Book appointment
 
 PUT /api/appointments/{id} – Update appointment status
 
-Database
+⚙️ Database Design
 
-The system uses MySQL for persistent storage. JPA and Hibernate manage relational mappings between users, doctors, and appointments.
+The system uses MySQL for persistent storage and maintains relational mappings between:
 
-How to Run
+Users
 
-Clone the repository
-git clone <repository-link>
+Doctors
 
-Configure database credentials in application.properties
+Appointments
 
-Run the application
-mvn spring-boot:run
-
-Access at
-http://localhost:8080
+JPA/Hibernate handles entity relationships and schema management.
